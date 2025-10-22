@@ -7,6 +7,9 @@ const tasks  = [
         id : 2 , description : "apprendre C++" , isDone: true
     },
 ];
+let complet =[]
+let en_attendant =[] ;
+
 console.log(`=== To-Do List simple === `);
 while(true) {
     console.log("\n === To-Do List === ") ;
@@ -24,20 +27,43 @@ if (choice === `1`) {
     if(tasks.length === 0){
         console.log("il n'y a pas de mission .");
     } else{
-        for (let i = 0 ; i < tasks.length ; i++) {
-            const task = tasks[i];
-            let status;
-if(task.isDone === true){
-        
-    status = "complet ";
-    }
-    else {
-        status = "en attendant  " ;
-    }
-    console.log(`${i+1}.${task.description} - ${status}`);
+         for (let i = 0 ; i < tasks.length ; i++) 
+            
+         
+         console.log(tasks[i]) ;
         }
     }
+        
+    
+        else if (choice === `7`) {
+for (let i = 0 ; i < tasks.length ; i++) {
+           if (tasks[i].isDone === true) {
+            complet.push(tasks[i])
+           }
+             en_attendant.push(tasks[i]) }
+        
+
+    console.log(`taches complet `);
+    if (complet.length!=0){
+        for (let i = 0 ; i < complet.length ; i++){
+            console.log(complet[i])
+        }
+    }
+
+    else {
+        console.log("rien a afficher ")
+    }
+console.log("taches en en attendant")
+if (en_attendant.length!=0) {
+    for (let i = 0 ; i < en_attendant.length ; i++){
+        console.log(en_attendant[i])
+    }
 }
+        
+else {
+    console.log("rein a afficher");
+}
+        }
 else if (choice === `2`) {
     const newDescription = prompt ("Nouvelle description de mission : ");
     const newTask = {description : newDescription ,isDone : false };
@@ -45,7 +71,7 @@ else if (choice === `2`) {
      console.log("la tache a ete ajoutee") ;
 }
  else if (choice === '3') {
-        const searchTerm = prompt("aaaaaa: ").toLowerCase(); 
+        const searchTerm = prompt("mot de recherche: ").toLowerCase(); 
         const foundTasks = tasks.filter((task)=> task.description.includes(searchTerm))[0]
        console.log(foundTasks);
       
@@ -91,7 +117,7 @@ else if ( choice === `5` ){
     }
 }
 else if (choice === `0`){
-    console.log("by by")
+    console.log("Au revoir")
     break;
 }
 else{
